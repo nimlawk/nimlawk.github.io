@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hey u</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #ffcce5, #ffe6f0);
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 50px;
+      color: #333;
+    }
+    h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 18px;
+      margin: 10px 0;
+    }
+    input {
+      padding: 10px;
+      font-size: 16px;
+      width: 250px;
+      margin: 10px 0 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      padding: 10px 25px;
+      font-size: 16px;
+      background-color: #ff5e9c;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .error {
+      color: red;
+      margin-top: 15px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Hey u</h1>
+  <p>before u open ur surprise,</p>
+  <p>u need to prove u are really… <strong>you</strong>. 😈</p>
+  <p>just answer two questions</p>
+
+  <p><strong>1. What’s your favorite web series?</strong><br><em>(type without last word)</em></p>
+  <input type="text" id="series" placeholder="example: gameof">
+
+  <p><strong>2. What do you call me?</strong><br><em>be honest — the one u always use 😇</em></p>
+  <input type="text" id="name" placeholder="example: babu">
+
+  <br>
+  <button onclick="checkAnswer()">Check</button>
+  <div class="error" id="error"></div>
+
+  <script>
+    function checkAnswer() {
+      const s = document.getElementById('series').value.toLowerCase().replace(/\s/g, '');
+      const n = document.getElementById('name').value.toLowerCase().trim();
+      if (s === 'gameof' && n === 'babu') {
+        window.location.href = './gameofbabu/';
+      } else {
+        document.getElementById('error').textContent = 'Nope 😈 Try again';
+      }
+    }
+  </script>
+</body>
+</html>
