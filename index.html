@@ -73,14 +73,18 @@
       animation: fadeIn 0.5s ease forwards;
     }
 
-    #error-text {
-      opacity: 0;
+    #error-main {
       font-size: 24px;
+      font-weight: bold;
       white-space: pre-line;
+      animation: flash 0.2s steps(2, start) infinite;
     }
 
-    .flash {
-      animation: flash 0.15s steps(1) infinite;
+    #error-details {
+      opacity: 0;
+      transition: opacity 0.6s ease;
+      margin-top: 20px;
+      white-space: pre-line;
     }
 
     @keyframes fadeIn {
@@ -89,8 +93,9 @@
     }
 
     @keyframes flash {
-      0%, 50% { opacity: 1 }
-      51%, 100% { opacity: 0 }
+      0% { opacity: 1 }
+      50% { opacity: 0 }
+      100% { opacity: 1 }
     }
 
     .confetti {
@@ -128,7 +133,9 @@
   <div class="error" id="error"></div>
 
   <div id="bsod">
-    <pre id="error-text"><span class="flash">FATAL BIRTHDAY ERROR</span></pre>
+    <div id="error-main">FATAL BIRTHDAY ERROR</div>
+    <div id="error-details">SYSTEM OVERLOADED WITH LOVE 💙  
+Redirecting...</div>
   </div>
 
   <script>
@@ -161,16 +168,17 @@
 
     function showErrorScreen() {
       const bsod = document.getElementById('bsod');
-      const text = document.getElementById('error-text');
+      const main = document.getElementById('error-main');
+      const details = document.getElementById('error-details');
       bsod.style.display = 'block';
 
-      // After 1.5s, show the rest of the error
+      // Show details after delay
       setTimeout(() => {
-        text.classList.remove("flash");
-        text.innerHTML = `FATAL BIRTHDAY ERROR\nSYSTEM OVERLOADED WITH LOVE 💙\nRedirecting...`;
+        main.style.animation = 'none';
+        details.style.opacity = 1;
       }, 1500);
 
-      // Redirect after 4.5s
+      // Redirect
       setTimeout(() => {
         window.location.href = "./gameofbabu/";
       }, 4500);
